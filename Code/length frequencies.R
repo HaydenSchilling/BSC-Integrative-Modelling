@@ -32,8 +32,8 @@ all_dat <- bind_rows(fdat, mdat)
 
 #mutate(Period = as_date(Period, format = "%Y-%m"))
 
-ggplot(all_dat, aes(`Length Class`, col=Sex, group = Sex, linetype=Sex)) + geom_density() + facet_wrap(~Month) +
-  xlab("Length (cm)") + theme_classic()+
+ggplot(all_dat, aes(`Length Class`*10, col=Sex, group = Sex, linetype=Sex)) + geom_density() + facet_wrap(~Month) +
+  xlab("Length (mm)") + theme_classic()+
   theme(axis.title = element_text(face="bold", size=14),
         axis.text = element_text(size=12, colour="black"),
         panel.border = element_rect(fill=NA, colour="black"),
@@ -41,15 +41,15 @@ ggplot(all_dat, aes(`Length Class`, col=Sex, group = Sex, linetype=Sex)) + geom_
         strip.text = element_text(face="bold", size=12),
         legend.title = element_text(face="bold", size=12),
         legend.text = element_text(size=10))
-#ggsave("Conceptual model/Figures/Monthly size frequencies all years.pdf",
-#       dpi=600, width=21, height=23, units = "cm")
+ggsave("Monthly size frequencies all years.pdf",
+       dpi=600, width=21, height=23, units = "cm")
 
 table(fdat$Year)
 table(fdat$Month)
 
 all_dat17 <- all_dat %>% filter(Year < 2017)
-ggplot(all_dat17, aes(`Length Class`, col=Sex, group = Sex)) + geom_density() + facet_wrap(~Month) +
-  xlab("Length (cm)") + theme_classic()+
+ggplot(all_dat17, aes(`Length Class`*10, col=Sex, group = Sex)) + geom_density() + facet_wrap(~Month) +
+  xlab("Length (mm)") + theme_classic()+
   theme(axis.title = element_text(face="bold", size=14),
         axis.text = element_text(size=12, colour="black"),
         panel.border = element_rect(fill=NA, colour="black"),
@@ -57,8 +57,8 @@ ggplot(all_dat17, aes(`Length Class`, col=Sex, group = Sex)) + geom_density() + 
         strip.text = element_text(face="bold", size=12),
         legend.title = element_text(face="bold", size=12),
         legend.text = element_text(size=10))
-#ggsave("Conceptual model/Figures/Monthly size frequencies pre2017.pdf",
-#       dpi=600, width=21, height=23, units = "cm")
+ggsave("Monthly size frequencies pre2017.pdf",
+       dpi=600, width=21, height=23, units = "cm")
                                                    
 
 all_dat18 <- all_dat %>% filter(Year == 2018)          
